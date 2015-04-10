@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+psql -c "DROP DATABASE test_postgresql_connector"
+psql -c "DROP USER test"
