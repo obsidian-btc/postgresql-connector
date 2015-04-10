@@ -11,4 +11,6 @@ prox_gem 'settings'
 
 source 'https://rubygems.org'
 
+gem 'jdbc-postgres', '9.3.1102'
+gem 'sequel', '4.14.0'
 gem 'minitest', '~> 5.5.0'
