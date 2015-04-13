@@ -16,7 +16,7 @@ module Connection
   end
 end
 
-describe Connection do
+describe "Connection" do
   it "Connects to the database" do
     connector = Connection::Example.build
     connector.connect
