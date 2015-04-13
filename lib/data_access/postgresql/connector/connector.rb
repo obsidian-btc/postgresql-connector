@@ -5,6 +5,7 @@ module DataAccess
         cls.extend ClassMethods
 
         cls.send :dependency, :logger
+
         cls.send :setting, :host
         cls.send :setting, :database_name
         cls.send :setting, :username
@@ -43,8 +44,10 @@ module DataAccess
 
           instance = new
 
-          settings = settings()
+          settings = implementer.settings()
           settings.set instance, 'postgres_connection'
+
+          logger.debug "Built database connector (Database Name: #{database_name}, Host #{host})"
 
           instance
         end
@@ -52,6 +55,10 @@ module DataAccess
         def configure_connection(receiver)
           receiver.db_connection = instance.connection
           receiver
+        end
+
+        def implementer
+          self
         end
       end
     end
