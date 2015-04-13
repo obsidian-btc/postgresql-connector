@@ -1,5 +1,4 @@
 require 'sequel'
 require 'jdbc/postgres'
 
-require_relative 'connector/connector'
-
+require 'data_access/postgresql/connector/connector'
