@@ -6,26 +6,21 @@ module OverrideSettingsNamespace
     include DataAccess::PostgreSQL::Connector
 
     def self.settings
-      OverrideSettingsNamespace::Settings.instance
+      OverrideSettingsNamespace::Settings.build
     end
 
     def self.settings_namespace
-      nil
     end
   end
 
   class Settings < ::Settings
-    def self.instance
-      @instance ||= build
-    end
-
     def self.pathname
       'test/spec/postgresql_connector/override_settings_namespace.json'
     end
   end
 end
 
-describe "Override default settings samespace" do
+describe "Override default settings namespace" do
   it "Can be changed by overriding the 'settings_namespace' method" do
     connector = OverrideSettingsNamespace::Example.build
     connector.connect
