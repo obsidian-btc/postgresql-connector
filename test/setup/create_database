@@ -3,4 +3,4 @@
 test/setup/drop_database
 
 psql -c "CREATE DATABASE test_postgresql_connector"
-psql -c "CREATE USER test PASSWORD 'test_connector'"
+psql -c "CREATE USER test_connector PASSWORD 'test_connector'"
