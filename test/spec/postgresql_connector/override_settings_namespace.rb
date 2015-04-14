@@ -23,6 +23,6 @@ end
 describe "Override default settings namespace" do
   it "Can be changed by overriding the 'settings_namespace' method" do
     connector = OverrideSettingsNamespace::Example.build
-    connector.connect
+    assert(connector.database_name == 'override_settings_namespace_database')
   end
 end

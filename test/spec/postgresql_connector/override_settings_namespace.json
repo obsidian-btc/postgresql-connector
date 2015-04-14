@@ -1,6 +1,6 @@
 {
   "host": "127.0.0.1",
-  "database_name": "test_postgresql_connector",
-  "username": "test_connector",
-  "password": "test_connector"
+  "database_name": "override_settings_namespace_database",
+  "username": "override_settings_namespace_username",
+  "password": "override_settings_namespace_password"
 }

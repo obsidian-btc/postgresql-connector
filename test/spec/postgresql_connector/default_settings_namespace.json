@@ -1,8 +1,8 @@
 {
   "postgres_connection": {
     "host": "127.0.0.1",
-    "database_name": "test_postgresql_connector",
-    "username": "test_connector",
-    "password": "test_connector"
+    "database_name": "default_settings_namespace_database",
+    "username": "default_settings_namespace_username",
+    "password": "default_settings_namespace_password"
   }
 }
