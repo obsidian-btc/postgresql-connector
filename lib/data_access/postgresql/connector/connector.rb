@@ -45,11 +45,21 @@ module DataAccess
           instance = new
 
           settings = implementer.settings()
-          settings.set instance, 'postgres_connection'
+
+          namespace = settings_namespace
+          if namespace.nil?
+            settings.set instance
+          else
+            settings.set instance, namespace
+          end
 
           logger.debug "Built database connector (Database Name: #{database_name}, Host #{host})"
 
           instance
+        end
+
+        def settings_namespace
+          'postgres_connection'
         end
 
         def configure_connection(receiver)
