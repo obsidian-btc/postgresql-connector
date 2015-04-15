@@ -10,6 +10,7 @@ module OverrideSettingsNamespace
     end
 
     def self.settings_namespace
+      'some_other_namespace'
     end
   end
 
