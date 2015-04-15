@@ -14,7 +14,7 @@ module OverrideSettingsNamespace
   end
 
   class Settings < ::Settings
-    def self.pathname
+    def self.data_source
       'test/spec/postgresql_connector/override_settings_namespace.json'
     end
   end
