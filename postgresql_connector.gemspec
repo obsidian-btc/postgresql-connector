@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
-  s.name = 'postgresql-connector'
+  s.name = 'postgresql_connector'
   s.summary = 'PostgreSQL Connector for Sequel'
   s.version = '0.0.0'
   s.authors = ['']
