@@ -40,7 +40,7 @@ def _print_prox_gem_dir
 end
 
 def _prox_gem_git_uri
-  get_uri = ENV['PROX_GEM_GIT_URI']
+  git_uri = ENV['PROX_GEM_GIT_URI']
 
   return git_uri if _set? git_uri
 
