@@ -53,7 +53,7 @@ module DataAccess
             settings.set instance, namespace
           end
 
-          logger.debug "Built database connector (Database Name: #{database_name}, Host #{host})"
+          logger.debug "Built database connector (Database Name: #{instance.database_name}, Host #{instance.host})"
 
           instance
         end

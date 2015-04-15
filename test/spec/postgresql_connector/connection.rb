@@ -9,8 +9,8 @@ module Connection
       new.tap do |c|
         c.host = '127.0.0.1'
         c.database_name = 'test_postgresql_connector'
-        c.username = 'test'
-        c.password = 'test'
+        c.username = 'test_connector'
+        c.password = 'test_connector'
       end
     end
   end
