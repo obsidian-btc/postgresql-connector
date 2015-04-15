@@ -1,8 +1,5 @@
 {
   "postgres_connection": {
-    "host": "127.0.0.1",
-    "database_name": "default_settings_namespace_database",
-    "username": "default_settings_namespace_username",
-    "password": "default_settings_namespace_password"
+    "database_name": "default_settings_namespace_database"
   }
 }
