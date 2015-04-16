@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.2'
 
   s.add_runtime_dependency 'sequel', '4.14.0'
+  s.add_runtime_dependency 'jdbc-postgres', '9.3.1102'
 end
