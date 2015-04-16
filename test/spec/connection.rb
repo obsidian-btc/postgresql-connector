@@ -1,4 +1,4 @@
-require_relative 'postgresql_connector_init'
+require_relative 'spec_init'
 require 'minitest/autorun'
 
 module Connection

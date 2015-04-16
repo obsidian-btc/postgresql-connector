@@ -1,5 +1,5 @@
 require_relative 'test_init'
 
-Runner.! 'spec/postgresql_connector/*.rb' do |exclude|
-  exclude =~ /_init.rb\z/
+Runner.! 'spec/*.rb' do |exclude|
+  exclude =~ /spec_init.rb\z/
 end

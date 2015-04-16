@@ -1,4 +1,4 @@
-require_relative 'postgresql_connector_init'
+require_relative 'spec_init'
 require 'minitest/autorun'
 
 module OverrideSettingsNamespace
@@ -16,7 +16,7 @@ module OverrideSettingsNamespace
 
   class Settings < ::Settings
     def self.data_source
-      'test/spec/postgresql_connector/override_settings_namespace.json'
+      'test/spec/override_settings_namespace.json'
     end
   end
 end
