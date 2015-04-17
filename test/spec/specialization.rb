@@ -1,5 +1,4 @@
 require_relative 'spec_init'
-require 'minitest/autorun'
 
 module Specialization
   class Example
@@ -31,7 +30,7 @@ module Specialization
 end
 
 describe "Connector that supports specialization" do
-  it "Specializes the connection" do
+  specify "Specializes the connection" do
     connector = Specialization::Example.build
     connector.add_specialization
     connector.connect
@@ -40,7 +39,7 @@ describe "Connector that supports specialization" do
 end
 
 describe "Connector that doesn't support specialization" do
-  it "Doesn't specialize the connection" do
+  specify "Doesn't specialize the connection" do
     connector = Specialization::Example.build
     connector.connect
     refute(connector.specialized?)

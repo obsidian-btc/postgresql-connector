@@ -1,5 +1,4 @@
 require_relative 'spec_init'
-require 'minitest/autorun'
 
 module Connection
   class Example
@@ -17,7 +16,7 @@ module Connection
 end
 
 describe "Connection" do
-  it "Connects to the database" do
+  specify "Connects to the database" do
     connector = Connection::Example.build
     connector.connect
   end

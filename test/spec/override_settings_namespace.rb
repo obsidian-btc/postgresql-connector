@@ -1,5 +1,4 @@
 require_relative 'spec_init'
-require 'minitest/autorun'
 
 module OverrideSettingsNamespace
   class Example
@@ -22,7 +21,7 @@ module OverrideSettingsNamespace
 end
 
 describe "Override default settings namespace" do
-  it "Can be changed by overriding the 'settings_namespace' method" do
+  specify "Can be changed by overriding the 'settings_namespace' method" do
     connector = OverrideSettingsNamespace::Example.build
     assert(connector.database == 'override_settings_namespace_database')
   end
