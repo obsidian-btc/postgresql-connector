@@ -7,7 +7,7 @@ module DataAccess
         cls.send :dependency, :logger
 
         cls.send :setting, :host
-        cls.send :setting, :database_name
+        cls.send :setting, :database
         cls.send :setting, :username
         cls.send :setting, :password
       end
@@ -17,15 +17,15 @@ module DataAccess
       end
 
       def connect
-        logger.trace "Connecting to database \"#{database_name}\" (Host: #{host})"
+        logger.trace "Connecting to database \"#{database}\" (Host: #{host})"
 
-        Sequel.connect("jdbc:postgresql://#{host}/#{database_name}?user=#{username}&password=#{password}").tap do |connection|
-          logger.debug "Connected to database \"#{database_name}\" (Host: #{host})"
+        Sequel.connect("jdbc:postgresql://#{host}/#{database}?user=#{username}&password=#{password}").tap do |connection|
+          logger.debug "Connected to database \"#{database}\" (Host: #{host})"
 
           if respond_to? :specialize
-            logger.trace "Specializing the connection to \"#{database_name}\" (Host: #{host})"
+            logger.trace "Specializing the connection to \"#{database}\" (Host: #{host})"
             specialize(connection)
-            logger.debug "Specialized the connection to \"#{database_name}\" (Host: #{host})"
+            logger.debug "Specialized the connection to \"#{database}\" (Host: #{host})"
           end
         end
       end
@@ -53,7 +53,7 @@ module DataAccess
             settings.set instance, namespace
           end
 
-          logger.debug "Built database connector (Database Name: #{instance.database_name}, Host #{instance.host})"
+          logger.debug "Built database connector (Database Name: #{instance.database}, Host #{instance.host})"
 
           instance
         end

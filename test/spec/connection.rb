@@ -1,5 +1,4 @@
-require_relative 'postgresql_connector_init'
-require 'minitest/autorun'
+require_relative 'spec_init'
 
 module Connection
   class Example
@@ -8,7 +7,7 @@ module Connection
     def self.build
       new.tap do |c|
         c.host = '127.0.0.1'
-        c.database_name = 'test_postgresql_connector'
+        c.database = 'test_postgresql_connector'
         c.username = 'test_connector'
         c.password = 'test_connector'
       end
@@ -17,7 +16,7 @@ module Connection
 end
 
 describe "Connection" do
-  it "Connects to the database" do
+  specify "Connects to the database" do
     connector = Connection::Example.build
     connector.connect
   end

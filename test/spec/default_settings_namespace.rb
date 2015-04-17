@@ -1,5 +1,4 @@
-require_relative 'postgresql_connector_init'
-require 'minitest/autorun'
+require_relative 'spec_init'
 
 module DefaultSettingsNamespace
   class Example
@@ -12,14 +11,14 @@ module DefaultSettingsNamespace
 
   class Settings < ::Settings
     def self.data_source
-      'test/spec/postgresql_connector/default_settings_namespace.json'
+      'test/spec/default_settings_namespace.json'
     end
   end
 end
 
 describe "Default settings namespace" do
-  it "Uses the 'postgres_connection' key for database connection settings" do
+  specify "Uses the 'postgres_connection' key for database connection settings" do
     connector = DefaultSettingsNamespace::Example.build
-    assert(connector.database_name == 'default_settings_namespace_database')
+    assert(connector.database == 'default_settings_namespace_database')
   end
 end

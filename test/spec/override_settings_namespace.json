@@ -1,0 +1,5 @@
+{
+  "some_other_namespace": {
+    "database": "override_settings_namespace_database"
+  }
+}

@@ -1,5 +1,0 @@
-{
-  "postgres_connection": {
-    "database_name": "default_settings_namespace_database"
-  }
-}

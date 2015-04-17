@@ -1,5 +1,4 @@
-require_relative 'postgresql_connector_init'
-require 'minitest/autorun'
+require_relative 'spec_init'
 
 module Specialization
   class Example
@@ -8,7 +7,7 @@ module Specialization
     def self.build
       new.tap do |c|
         c.host = '127.0.0.1'
-        c.database_name = 'test_postgresql_connector'
+        c.database = 'test_postgresql_connector'
         c.username = 'test'
         c.password = 'test'
       end
@@ -31,7 +30,7 @@ module Specialization
 end
 
 describe "Connector that supports specialization" do
-  it "Specializes the connection" do
+  specify "Specializes the connection" do
     connector = Specialization::Example.build
     connector.add_specialization
     connector.connect
@@ -40,7 +39,7 @@ describe "Connector that supports specialization" do
 end
 
 describe "Connector that doesn't support specialization" do
-  it "Doesn't specialize the connection" do
+  specify "Doesn't specialize the connection" do
     connector = Specialization::Example.build
     connector.connect
     refute(connector.specialized?)
