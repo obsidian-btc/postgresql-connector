@@ -4,7 +4,7 @@ module DataAccess
       def self.included(cls)
         cls.extend ClassMethods
 
-        cls.send :dependency, :logger
+        cls.send :dependency, :logger, ::Telemetry::Logger
 
         cls.send :setting, :host
         cls.send :setting, :database
@@ -32,7 +32,7 @@ module DataAccess
 
       module ClassMethods
         def logger
-          Logger.get self
+          ::Telemetry::Logger.get self
         end
 
         def instance
