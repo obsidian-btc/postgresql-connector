@@ -1,4 +1,4 @@
-# postgresql-connector
+# postgresql_connector
 
 PostgreSQL Connector for Sequel.
 
@@ -10,4 +10,4 @@ Run `test/setup/create_database` to setup the database.
 
 ## License
 
-The `postgresql-connector` library is released under the [MIT License](https://github.com/obsidian-btc/postgresql-connector/blob/master/MIT-License.txt).
+The `postgresql_connector` library is released under the [MIT License](https://github.com/obsidian-btc/postgresql-connector/blob/master/MIT-License.txt).
