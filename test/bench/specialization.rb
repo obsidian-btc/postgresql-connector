@@ -1,4 +1,4 @@
-require_relative 'spec_init'
+require_relative 'bench_init'
 
 module Specialization
   class Example
@@ -29,8 +29,8 @@ module Specialization
   end
 end
 
-describe "Connector that supports specialization" do
-  specify "Specializes the connection" do
+context "Connector that supports specialization" do
+  test "Specializes the connection" do
     connector = Specialization::Example.build
     connector.add_specialization
     connector.connect
@@ -38,8 +38,8 @@ describe "Connector that supports specialization" do
   end
 end
 
-describe "Connector that doesn't support specialization" do
-  specify "Doesn't specialize the connection" do
+context "Connector that doesn't support specialization" do
+  test "Doesn't specialize the connection" do
     connector = Specialization::Example.build
     connector.connect
     refute(connector.specialized?)

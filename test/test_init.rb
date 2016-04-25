@@ -1,9 +1,16 @@
 ENV['CONSOLE_DEVICE'] ||= 'stdout'
 ENV['LOG_COLOR'] ||= 'on'
-ENV['LOG_LEVEL'] ||= 'trace'
 
-puts RUBY_DESCRIPTION
+if ENV['LOG_LEVEL']
+  ENV['LOGGER'] ||= 'on'
+else
+  ENV['LOG_LEVEL'] ||= 'trace'
+end
+
+ENV['LOGGER'] ||= 'off'
 
 require_relative '../init.rb'
 
-TestLogger = Telemetry::Logger.get 'Test Output'
+require 'test_bench/activate'
+
+Telemetry::Logger::AdHoc.activate

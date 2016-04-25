@@ -1,4 +1,4 @@
-require_relative 'spec_init'
+require_relative 'bench_init'
 
 module OverrideSettingsNamespace
   class Example
@@ -15,13 +15,13 @@ module OverrideSettingsNamespace
 
   class Settings < ::Settings
     def self.data_source
-      'test/spec/override_settings_namespace.json'
+      'test/bench/override_settings_namespace.json'
     end
   end
 end
 
-describe "Override default settings namespace" do
-  specify "Can be changed by overriding the 'settings_namespace' method" do
+context "Override default settings namespace" do
+  test "Can be changed by overriding the 'settings_namespace' method" do
     connector = OverrideSettingsNamespace::Example.build
     assert(connector.database == 'override_settings_namespace_database')
   end

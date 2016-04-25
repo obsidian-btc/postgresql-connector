@@ -1,4 +1,4 @@
-require_relative 'spec_init'
+require_relative 'bench_init'
 
 module Connection
   class Example
@@ -21,13 +21,13 @@ module Connection
       tables == [:example_table]
 
     ensure
-      connection.execute 'DROP TABLE example_table'
+      execute 'DROP TABLE example_table'
     end
   end
 end
 
-describe "Connection" do
-  specify "Connects to the database" do
+context "Connection" do
+  test "Connects to the database" do
     connector = Connection::Example.build
     connection = connector.connect
 
