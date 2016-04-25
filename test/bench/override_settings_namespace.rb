@@ -5,17 +5,15 @@ module OverrideSettingsNamespace
     include PostgreSQL::Connector
 
     def self.settings
-      OverrideSettingsNamespace::Settings.build
+      ::Settings.build({
+        :some_other_namespace => {
+          :database => "override_settings_namespace_database"
+        }
+      })
     end
 
     def self.settings_namespace
       'some_other_namespace'
-    end
-  end
-
-  class Settings < ::Settings
-    def self.data_source
-      'test/bench/override_settings_namespace.json'
     end
   end
 end

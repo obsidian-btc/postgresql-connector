@@ -5,13 +5,11 @@ module DefaultSettingsNamespace
     include PostgreSQL::Connector
 
     def self.settings
-      DefaultSettingsNamespace::Settings.build
-    end
-  end
-
-  class Settings < ::Settings
-    def self.data_source
-      'test/bench/default_settings_namespace.json'
+      ::Settings.build({
+        :postgres_connection => {
+          :database => "default_settings_namespace_database"
+        }
+      })
     end
   end
 end
