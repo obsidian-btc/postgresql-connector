@@ -2,7 +2,7 @@ require_relative 'spec_init'
 
 module Specialization
   class Example
-    include DataAccess::PostgreSQL::Connector
+    include PostgreSQL::Connector
 
     def self.build
       new.tap do |c|

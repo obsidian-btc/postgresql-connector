@@ -2,7 +2,7 @@ require_relative 'spec_init'
 
 module DefaultSettingsNamespace
   class Example
-    include DataAccess::PostgreSQL::Connector
+    include PostgreSQL::Connector
 
     def self.settings
       DefaultSettingsNamespace::Settings.build

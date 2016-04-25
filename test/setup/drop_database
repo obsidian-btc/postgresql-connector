@@ -1,4 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-psql -c "DROP DATABASE test_postgresql_connector"
-psql -c "DROP USER test_connector"
+source "${BASH_SOURCE%/*}/setup_init.sh"
+
+database_count="$($psql -c "SELECT datname FROM pg_database" | grep $database_name | wc -l | xargs)"
+
+if [ "$database_count" != 0 ]; then
+  $psql -c "DROP DATABASE $database_name"
+  $psql -c "DROP USER $username"
+fi

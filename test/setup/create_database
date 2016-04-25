@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-test/setup/drop_database
+source "${BASH_SOURCE%/*}/setup_init.sh"
 
-psql -c "CREATE DATABASE test_postgresql_connector"
-psql -c "CREATE USER test_connector PASSWORD 'test_connector'"
+source "${BASH_SOURCE%/*}/drop_database"
+
+$psql -c "CREATE DATABASE $database_name"
+$psql -c "CREATE USER $username NOCREATEDB NOCREATEUSER UNENCRYPTED PASSWORD '$password'"

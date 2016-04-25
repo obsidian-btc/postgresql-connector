@@ -2,7 +2,7 @@ require_relative 'spec_init'
 
 module OverrideSettingsNamespace
   class Example
-    include DataAccess::PostgreSQL::Connector
+    include PostgreSQL::Connector
 
     def self.settings
       OverrideSettingsNamespace::Settings.build
