@@ -1,17 +1,8 @@
-require_relative 'bench_init'
+require_relative './bench_init'
 
 module Specialization
-  class Example
+  class Example < PostgreSQL::Connector::Controls::ExampleClass
     include PostgreSQL::Connector
-
-    def self.build
-      new.tap do |c|
-        c.host = '127.0.0.1'
-        c.database = 'test_postgresql_connector'
-        c.username = 'test'
-        c.password = 'test'
-      end
-    end
 
     def specialized?
       !!@specialized
@@ -45,4 +36,3 @@ context "Connector that doesn't support specialization" do
     refute(connector.specialized?)
   end
 end
-

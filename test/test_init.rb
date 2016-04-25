@@ -8,8 +8,11 @@ else
 end
 
 ENV['LOGGER'] ||= 'off'
+ENV['LOG_OPTIONAL'] ||= 'on'
 
 require_relative '../init.rb'
+
+require 'postgresql/connector/controls'
 
 require 'test_bench/activate'
 

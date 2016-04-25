@@ -1,14 +1,19 @@
 module PostgreSQL
   module Connector
     def self.included(cls)
-      cls.extend ClassMethods
+      cls.class_exec do
+        extend Build
+        extend ConfigureConnection
+        extend Instance
+        extend Settings
 
-      cls.send :dependency, :logger, Telemetry::Logger
+        dependency :logger, Telemetry::Logger
 
-      cls.send :setting, :host
-      cls.send :setting, :database
-      cls.send :setting, :username
-      cls.send :setting, :password
+        setting :host
+        setting :database
+        setting :username
+        setting :password
+      end
     end
 
     def connection
@@ -16,34 +21,30 @@ module PostgreSQL
     end
 
     def connect
-      logger.trace "Connecting to database \"#{database}\" (Host: #{host})"
+      logger.opt_trace "Connecting to database \"#{database}\" (Host: #{host})"
 
       Sequel.connect("postgresql://#{username}:#{password}@#{host}/#{database}?").tap do |connection|
-        logger.debug "Connected to database \"#{database}\" (Host: #{host})"
+        logger.opt_debug "Connected to database \"#{database}\" (Host: #{host})"
 
         if respond_to? :specialize
-          logger.trace "Specializing the connection to \"#{database}\" (Host: #{host})"
+          logger.opt_trace "Specializing the connection to \"#{database}\" (Host: #{host})"
           specialize(connection)
-          logger.debug "Specialized the connection to \"#{database}\" (Host: #{host})"
+          logger.opt_debug "Specialized the connection to \"#{database}\" (Host: #{host})"
         end
       end
     end
 
-    module ClassMethods
-      def logger
-        Telemetry::Logger.get self
-      end
-
+    module Instance
       def instance
         @instance ||= build
       end
+    end
 
+    module Build
       def build
-        logger.trace "Building database connector"
-
         instance = new
 
-        settings = implementer.settings()
+        settings = self.settings
 
         namespace = settings_namespace
         if namespace.nil?
@@ -52,22 +53,30 @@ module PostgreSQL
           settings.set instance, namespace
         end
 
-        logger.debug "Built database connector (Database Name: #{instance.database}, Host #{instance.host})"
-
         instance
       end
 
       def settings_namespace
         'postgres_connection'
       end
+    end
 
-      def configure_connection(receiver)
-        receiver.db_connection = instance.connection
-        receiver
+    module ConfigureConnection
+      def configure_connection(receiver, attr_name: nil)
+        attr_name ||= :db_connection
+
+        connection = instance.connection
+        receiver.public_send "#{attr_name}=", connection
+        connection
       end
+    end
 
-      def implementer
-        self
+    module Settings
+      def self.extended(cls)
+        cls.singleton_class.class_exec do
+          extend Virtual::Macro
+          abstract :settings
+        end
       end
     end
   end

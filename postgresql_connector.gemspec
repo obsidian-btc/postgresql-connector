@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'pg', '> 0'
 
   s.add_runtime_dependency 'settings', '> 0'
+  s.add_runtime_dependency 'virtual', '> 0'
 
   s.add_development_dependency 'test_bench'
 end
