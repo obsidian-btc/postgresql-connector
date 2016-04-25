@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.name = 'postgresql_connector'
   s.summary = 'PostgreSQL Connector for Sequel'
-  s.version = '0.0.0'
+  s.version = '0.1.0.0'
   s.authors = ['']
   s.require_paths = ['lib']
   s.files = Dir.glob('{lib}/**/*')
