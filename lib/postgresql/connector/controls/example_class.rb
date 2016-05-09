@@ -9,7 +9,7 @@ module PostgreSQL
             c.host = '127.0.0.1'
             c.database = 'test_postgresql_connector'
             c.username = 'test_connector'
-            c.password = 'test_passwordx'
+            c.password = 'test_password'
           end
         end
       end
