@@ -10,7 +10,12 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.2'
 
   s.add_runtime_dependency 'sequel', '> 0'
-  s.add_runtime_dependency 'pg', '> 0'
+
+  if RUBY_ENGINE == 'jruby'
+    s.add_runtime_dependency 'jruby-pg', '> 0'
+  else
+    s.add_runtime_dependency 'pg', '> 0'
+  end
 
   s.add_runtime_dependency 'settings', '> 0'
   s.add_runtime_dependency 'virtual', '> 0'
