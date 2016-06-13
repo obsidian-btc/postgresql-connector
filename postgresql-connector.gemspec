@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'sequel', '> 0'
 
   if RUBY_ENGINE == 'jruby'
-    s.add_runtime_dependency 'jruby-pg', '> 0'
+    s.add_runtime_dependency 'pg_jruby', '> 0'
     s.platform = 'java'
   else
     s.add_runtime_dependency 'pg', '> 0'
