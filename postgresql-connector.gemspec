@@ -6,15 +6,16 @@ Gem::Specification.new do |s|
   s.authors = ['']
   s.require_paths = ['lib']
   s.files = Dir.glob('{lib}/**/*')
-  s.platform = Gem::Platform::RUBY
   s.required_ruby_version = '>= 1.9.2'
 
   s.add_runtime_dependency 'sequel', '> 0'
 
   if RUBY_ENGINE == 'jruby'
     s.add_runtime_dependency 'jruby-pg', '> 0'
+    s.platform = 'java'
   else
     s.add_runtime_dependency 'pg', '> 0'
+    s.platform = Gem::Platform::RUBY
   end
 
   s.add_runtime_dependency 'settings', '> 0'
