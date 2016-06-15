@@ -18,8 +18,6 @@ Gem::Specification.new do |s|
     s.platform = Gem::Platform::RUBY
   end
 
-  s.add_runtime_dependency 'settings', '> 0'
-  s.add_runtime_dependency 'virtual', '> 0'
-
-  s.add_development_dependency 'test_bench'
+  s.add_runtime_dependency 'settings'
+  s.add_runtime_dependency 'virtual'
 end
