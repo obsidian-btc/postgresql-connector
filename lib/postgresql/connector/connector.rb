@@ -53,6 +53,8 @@ module PostgreSQL
           settings.set instance, namespace
         end
 
+        Telemetry::Logger.configure instance
+
         instance
       end
 
