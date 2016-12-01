@@ -2,8 +2,9 @@ require 'sequel'
 require 'pg'
 
 require 'dependency'; Dependency.activate
-require 'telemetry/logger'
+require 'log'
 require 'settings'; Settings.activate
 require 'virtual'
 
+require 'postgresql/connector/log'
 require 'postgresql/connector/connector'

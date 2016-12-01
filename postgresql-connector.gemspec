@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   end
 
   s.add_runtime_dependency 'settings'
+  s.add_runtime_depenedncy 'sequel'
   s.add_runtime_dependency 'virtual'
 end

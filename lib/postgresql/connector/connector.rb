@@ -2,12 +2,12 @@ module PostgreSQL
   module Connector
     def self.included(cls)
       cls.class_exec do
+        include Log::Dependency
+
         extend Build
         extend ConfigureConnection
         extend Instance
         extend Settings
-
-        dependency :logger, Telemetry::Logger
 
         setting :host
         setting :database
@@ -21,15 +21,15 @@ module PostgreSQL
     end
 
     def connect
-      logger.opt_trace "Connecting to database \"#{database}\" (Host: #{host})"
+      logger.trace "Connecting to database \"#{database}\" (Host: #{host})"
 
       Sequel.connect("postgresql://#{username}:#{password}@#{host}/#{database}?").tap do |connection|
-        logger.opt_debug "Connected to database \"#{database}\" (Host: #{host})"
+        logger.debug "Connected to database \"#{database}\" (Host: #{host})"
 
         if respond_to? :specialize
-          logger.opt_trace "Specializing the connection to \"#{database}\" (Host: #{host})"
+          logger.trace "Specializing the connection to \"#{database}\" (Host: #{host})"
           specialize(connection)
-          logger.opt_debug "Specialized the connection to \"#{database}\" (Host: #{host})"
+          logger.debug "Specialized the connection to \"#{database}\" (Host: #{host})"
         end
       end
     end
@@ -52,8 +52,6 @@ module PostgreSQL
         else
           settings.set instance, namespace
         end
-
-        Telemetry::Logger.configure instance
 
         instance
       end

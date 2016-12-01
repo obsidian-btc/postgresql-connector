@@ -1,7 +1,7 @@
-require_relative './bench_init'
+require_relative './automated_init'
 
 module Specialization
-  class Example < PostgreSQL::Connector::Controls::ExampleClass
+  class Example < Controls::ExampleClass
     include PostgreSQL::Connector
 
     def specialized?
