@@ -23,6 +23,8 @@ module PostgreSQL
     def connect
       logger.trace "Connecting to database \"#{database}\" (Host: #{host})"
 
+      Sequel.database_timezone = :utc
+
       Sequel.connect("postgresql://#{username}:#{password}@#{host}/#{database}?").tap do |connection|
         logger.debug "Connected to database \"#{database}\" (Host: #{host})"
 
