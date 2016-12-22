@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'sequel'
+gemspec
 
-gem 'evt-virtual'
-gem 'evt-settings'
+gem 'sequel'
 
 group :development do
   gem 'test_bench'
