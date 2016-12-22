@@ -2,20 +2,8 @@ source 'https://rubygems.org'
 
 gem 'sequel'
 
-source 'https://gem.fury.io/eventide' do
-  gem 'virtual'
-
-  gem 'attribute'
-  gem 'clock'
-  gem 'configure'
-  gem 'log'
-  gem 'initializer'
-  gem 'schema'
-  gem 'serialize'
-  gem 'settings'
-  gem 'telemetry'
-  gem 'validate'
-end
+gem 'evt-virtual'
+gem 'evt-settings'
 
 group :development do
   gem 'test_bench'

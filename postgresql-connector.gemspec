@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
     s.platform = Gem::Platform::RUBY
   end
 
-  s.add_runtime_dependency 'settings'
-  s.add_runtime_dependency 'virtual'
+  s.add_runtime_dependency 'evt-settings'
+  s.add_runtime_dependency 'evt-virtual'
 end
